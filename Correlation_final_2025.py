@@ -589,8 +589,8 @@ def f(sigma):
     recap_all["step(h)"]    = np.ones(len(recap_all)) * step
     recap_all["Mc_deep"]    = np.ones(len(recap_all)) * mc_deep
     recap_all["Mc_shallow"] = np.ones(len(recap_all)) * mc_shallow
+    recap_all["significance"] = np.ones(len(recap_all))*100  - recap_all["Proba luck"]
 
-    
     # !!! SAVE THE DATAFRAME !!!
     recap_all.to_csv(out_dir + '/Corrcoef_JMA_mcDeep' + str(mc_deep) + '_mcShallow' + str(mc_shallow) + '_limit' + str(limit_depth_shallow) + '-' + str(limit_depth_deep)+ '-from_' + str(t_min)[0:10] + '_to_' + str(t_max)[0:10] + '_SynStart' + str(start_pick_synthetic)[0:10] + '_SynStop' + str(end_pick_synthetic)[0:10] + '_Lon' + str(lon_min_shallow) + '-' + str(lon_min) + '-' + str(lon_max) + '_Lat'+ str(lat_min) + '-' + str(lat_max) + '_sigma' + str(sigma) + 'h_w' + str(window) + 'h_step'+ str(step) + 'h.csv', index = False)
     corr_syn_proba = np.asarray(corr_syn_proba)
