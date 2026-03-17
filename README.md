@@ -1,6 +1,6 @@
 # Deep-Shallow-Synchronisation
 
-Correlation_final_2025_propre : Calculate the significance of the correlation between shallow interplate earthquakes and intermediate-depth intraslab earthquakes through time, by comparing the cross-correlation values between the shallow and deep seismicity rates with random correlation values. 
+Correlation_final_2025 : Calculate the significance of the correlation between shallow interplate earthquakes and intermediate-depth intraslab earthquakes through time, by comparing the cross-correlation values between the shallow and deep seismicity rates with random correlation values. 
 
 Steps:
 - Define the study period, the study area, and the parameters used to compute the seismicity rates
