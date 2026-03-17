@@ -384,30 +384,22 @@ def add_slab_depth_kita(catalog_japan):
     #slab_kita = slab_kita[(slab_kita["Lon"] >= lon_min ) & (slab_kita["Lon"]<= lon_max) & (slab_kita["Lat"]>=lat_min) & (slab_kita["Lat"]<=lat_max)]
     #display(slab_kita)
 
-
     # Interpolation to have slab depth at each EQ position of slab 2
     lon_to_find = slab_japan_up["Lon"]
     lat_to_find = slab_japan_up["Lat"]
     depth_interpolation_kita = griddata((slab_kita["Lon"], slab_kita["Lat"]), slab_kita["Depth"], (lon_to_find, lat_to_find), method='linear')
 
-
     slab_kita_interpolated = pd.DataFrame()
     slab_kita_interpolated["Depth"] = np.abs(depth_interpolation_kita)
     slab_kita_interpolated["Lon"]   = slab_japan_up["Lon"].values
     slab_kita_interpolated["Lat"]   = slab_japan_up["Lat"].values
-
-
-    
+   
     # Distance to top slab of earthquakes 
     # Interpolation to have slab depth at each EQ position (lon-lat)
     lon_to_find_cat                 = catalog_japan["Lon"]
     lat_to_find_cat                  = catalog_japan["Lat"]
     depth_interpolation_cat         = griddata((slab_kita_interpolated["Lon"],slab_kita_interpolated["Lat"]), slab_kita_interpolated["Depth"], (lon_to_find_cat , lat_to_find_cat ), method='linear')
     catalog_japan["Slab Depth"] = np.abs(depth_interpolation_cat)
-
-    #print("Lon min slab : ", slab_japan_up["Lon"].min(), "/ Lon max slab :", slab_japan_up["Lon"].max())
-    #print("Lat min slab : ", slab_japan_up["Lat"].min(), "/ Lat max slab : ",  slab_japan_up["Lat"].max())
-    #Distance to top slab negative when under (ABOVE ???) the slab surface
 
     catalog_japan["Distance to top slab"] = catalog_japan["Slab Depth"] - catalog_japan["Depth"]
     return(catalog_japan)
