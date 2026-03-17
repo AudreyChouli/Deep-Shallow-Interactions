@@ -1,5 +1,7 @@
 # Search_lineaments_clustering
 
+Search for along-dip elongated seismic patterns ("lineaments") in seismicity catalogs using clustering algorithms. 
+
 DBSCAN_clustering.py : Use the DBSCAN clustering algorithm to identify, in longitude and latitude, clusters of seismicity. The geographical clustering is performed on 15h-long overlapping windows. For each cluster find on a window, different properties of the cluster as its covariance matrix, duration, orientation to the trench, etc are calculated and stored in a dataframe. This dataframe is saved, and will be use for hierarchical clustering.
 
 Hierarchical_clustering.py : Use the dataframe created with DBSCAN_clustering.py, containing various properties on each DBSCAN cluster, to separate clusters in groups according to some of those properties using hierarchical clustering. The properties used are the sine of the angle of the cluster to the trench, the length of the cluster, the inverse of its aspect ration, and the difference between the deepest and shallowest events in the cluster. For each obtained group of clusters, a plot shows the distribution of the clusters on a map and an histogram of the number of clusters through time. Map and cross-sections of the clusters can also be plotted.  
